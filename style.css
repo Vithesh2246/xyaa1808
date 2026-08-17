@@ -2204,91 +2204,98 @@ button {
    PAGE 4 — LAST THING BUTTON
 ===================================================== */
 
+/* =====================================================
+   PAGE 4 — LAST THING BUTTON
+===================================================== */
+
 #messageNext {
-    position: absolute;
+    position: absolute !important;
 
-    left: 50%;
-    bottom: 24px;
+    left: 50% !important;
+    bottom: 24px !important;
 
-    transform: translateX(-50%);
+    min-width: 150px !important;
 
-    z-index: 100;
+    padding: 14px 28px !important;
 
-    display: block;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 
-    min-width: 150px;
+    transform: translateX(-50%) !important;
 
-    padding: 14px 28px;
+    z-index: 9999 !important;
 
-    border: none;
-    border-radius: 40px;
+    border: none !important;
+    border-radius: 40px !important;
 
     background:
         linear-gradient(
             135deg,
             #7137d4,
             #5420a9
-        );
+        ) !important;
 
-    color: white;
+    color: white !important;
 
-    font-size: 15px;
-    font-weight: 800;
+    font-size: 15px !important;
+    font-weight: 800 !important;
 
-    cursor: pointer;
+    cursor: pointer !important;
 
     box-shadow:
-        0 12px 28px
-        rgba(80,40,160,.3);
+        0 12px 28px rgba(80,40,160,.3) !important;
 
     transition:
-        background .2s ease,
-        box-shadow .2s ease,
-        transform .2s ease;
+        opacity .6s ease,
+        visibility .6s ease,
+        transform .2s ease !important;
 }
 
-#messageNext:hover {
-    background:
-        linear-gradient(
-            135deg,
-            #6230be,
-            #45158e
-        );
 
+/* THIS CLASS MAKES IT VISIBLE */
+
+#messageNext.show-later {
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    transform: translateX(-50%) !important;
+}
+
+
+/* Hover */
+
+#messageNext.show-later:hover {
     transform:
         translateX(-50%)
         translateY(-3px)
-        scale(1.04);
-
-    box-shadow:
-        0 16px 32px
-        rgba(80,40,160,.38);
+        scale(1.04) !important;
 }
 
 
-/* MOBILE */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 700px) {
 
     #messageNext {
-        left: 50%;
+        bottom: 14px !important;
 
-        bottom: 12px;
+        min-width: 135px !important;
 
-        min-width: 135px;
+        padding: 12px 22px !important;
 
-        padding: 12px 22px;
-
-        font-size: 13px;
-
-        transform:
-            translateX(-50%);
+        font-size: 13px !important;
     }
 
-    #messageNext:hover {
+    #messageNext.show-later:hover {
         transform:
             translateX(-50%)
             translateY(-3px)
-            scale(1.04);
+            scale(1.04) !important;
     }
 }
