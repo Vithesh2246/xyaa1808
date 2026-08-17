@@ -753,9 +753,61 @@ function createCelebration() {
 ===================================================== */
 
 const birthdayNext =
-    document.getElementById(
-        "birthdayNext"
-    );
+    document.getElementById("birthdayNext");
+
+
+birthdayNext.addEventListener(
+    "click",
+    () => {
+
+        showPage(3);
+
+        /*
+           Hide Last thing button first
+        */
+
+        const messageNext =
+            document.getElementById(
+                "messageNext"
+            );
+
+        if (messageNext) {
+
+            messageNext.style.opacity = "0";
+            messageNext.style.visibility = "hidden";
+            messageNext.style.pointerEvents = "none";
+
+        }
+
+
+        /*
+           Give her time to read everything
+        */
+
+        setTimeout(() => {
+
+            /*
+               Make sure she's still
+               on Page 4
+            */
+
+            if (currentPage !== 3) {
+                return;
+            }
+
+
+            if (messageNext) {
+
+                messageNext.style.opacity = "1";
+                messageNext.style.visibility = "visible";
+                messageNext.style.pointerEvents = "auto";
+
+            }
+
+        }, 10000); // 10 seconds
+
+    }
+);
 
 
 if (birthdayNext) {
