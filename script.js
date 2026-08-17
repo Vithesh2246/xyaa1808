@@ -751,63 +751,15 @@ function createCelebration() {
 /* =====================================================
    BIRTHDAY → POSITIVE MESSAGE PAGE
 ===================================================== */
+/* =====================================================
+   BIRTHDAY → PAGE 4
+===================================================== */
 
 const birthdayNext =
     document.getElementById("birthdayNext");
 
-
-birthdayNext.addEventListener(
-    "click",
-    () => {
-
-        showPage(3);
-
-        /*
-           Hide Last thing button first
-        */
-
-        const messageNext =
-            document.getElementById(
-                "messageNext"
-            );
-
-        if (messageNext) {
-
-            messageNext.style.opacity = "0";
-            messageNext.style.visibility = "hidden";
-            messageNext.style.pointerEvents = "none";
-
-        }
-
-
-        /*
-           Give her time to read everything
-        */
-
-        setTimeout(() => {
-
-            /*
-               Make sure she's still
-               on Page 4
-            */
-
-            if (currentPage !== 3) {
-                return;
-            }
-
-
-            if (messageNext) {
-
-                messageNext.style.opacity = "1";
-                messageNext.style.visibility = "visible";
-                messageNext.style.pointerEvents = "auto";
-
-            }
-
-        }, 10000); // 10 seconds
-
-    }
-);
+const messageNext =
+    document.getElementById("messageNext");
 
 
 if (birthdayNext) {
@@ -820,10 +772,45 @@ if (birthdayNext) {
 
 
             /*
-               Start Page 4 photo reveal
+               Always hide the button
+               when Page 4 opens.
             */
 
-            showPage4Photo();
+            if (messageNext) {
+
+                messageNext.classList.remove(
+                    "show-later"
+                );
+
+            }
+
+
+            /*
+               Give her 10 seconds
+               to read everything.
+            */
+
+            setTimeout(() => {
+
+                /*
+                   Don't show it if
+                   she already left Page 4.
+                */
+
+                if (currentPage !== 3) {
+                    return;
+                }
+
+
+                if (messageNext) {
+
+                    messageNext.classList.add(
+                        "show-later"
+                    );
+
+                }
+
+            }, 10000);
 
         }
     );
