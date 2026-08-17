@@ -752,71 +752,48 @@ function createCelebration() {
    BIRTHDAY → POSITIVE MESSAGE PAGE
 ===================================================== */
 /* =====================================================
-   BIRTHDAY → PAGE 4
+   PAGE 3 → PAGE 4
+   THEN SHOW "LAST THING" AFTER 10 SECONDS
 ===================================================== */
 
-const birthdayNext =
-    document.getElementById("birthdayNext");
-
-const messageNext =
-    document.getElementById("messageNext");
-
+const birthdayNext = document.getElementById("birthdayNext");
+const messageNext = document.getElementById("messageNext");
 
 if (birthdayNext) {
 
-    birthdayNext.addEventListener(
-        "click",
-        () => {
+    birthdayNext.addEventListener("click", () => {
 
-            showPage(3);
+        showPage(3);
 
-
-            /*
-               Always hide the button
-               when Page 4 opens.
-            */
-
-            if (messageNext) {
-
-                messageNext.classList.remove(
-                    "show-later"
-                );
-
-            }
-
-
-            /*
-               Give her 10 seconds
-               to read everything.
-            */
-
-            setTimeout(() => {
-
-                /*
-                   Don't show it if
-                   she already left Page 4.
-                */
-
-                if (currentPage !== 3) {
-                    return;
-                }
-
-
-                if (messageNext) {
-
-                    messageNext.classList.add(
-                        "show-later"
-                    );
-
-                }
-
-            }, 10000);
-
+        if (!messageNext) {
+            console.error("messageNext button not found");
+            return;
         }
-    );
 
+        /* Hide it immediately */
+        messageNext.style.setProperty("opacity", "0", "important");
+        messageNext.style.setProperty("visibility", "hidden", "important");
+        messageNext.style.setProperty("display", "block", "important");
+        messageNext.style.setProperty("pointer-events", "none", "important");
+
+        console.log("Page 4 opened. Waiting for Last thing button...");
+
+        /* Wait 10 seconds */
+        setTimeout(() => {
+
+            if (currentPage !== 3) return;
+
+            messageNext.style.setProperty("opacity", "1", "important");
+            messageNext.style.setProperty("visibility", "visible", "important");
+            messageNext.style.setProperty("display", "block", "important");
+            messageNext.style.setProperty("pointer-events", "auto", "important");
+
+            console.log("Last thing button SHOWN");
+
+        }, 10000);
+
+    });
 }
-
 
 /* =====================================================
    PAGE 4 — DELAYED GAMING PHOTO
